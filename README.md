@@ -1,6 +1,6 @@
 # Gestor de Tareas
 
-
+https://github.com/user-attachments/assets/d0e8c2c9-884d-4fac-9b48-5be19c379c28
 
 ## Getting Started
 
