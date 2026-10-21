@@ -1,4 +1,4 @@
-class TaskValidator {
+class TaskFormUtils {
   static const int minTitleLength = 3;
 
   static String? validateTitle(String? value) {

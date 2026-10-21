@@ -1,5 +1,5 @@
 import 'package:crud_app/domain/task.dart';
-import 'package:crud_app/domain/task_validator.dart';
+import 'package:crud_app/presentation/utils/task_form_utils.dart';
 import 'package:crud_app/presentation/providers/task_list_notifier.dart';
 import 'package:crud_app/presentation/providers/task_providers.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +11,10 @@ class TaskFormScreen extends ConsumerStatefulWidget {
   final Task? existingTask;
 
   @override
-  ConsumerState<TaskFormScreen> createState() => TaskFormScreenState();
+  ConsumerState<TaskFormScreen> createState() => _TaskFormScreenState();
 }
 
-class TaskFormScreenState extends ConsumerState<TaskFormScreen> {
+class _TaskFormScreenState extends ConsumerState<TaskFormScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late final TextEditingController _titleController;
   late final TextEditingController _descriptionController;
@@ -76,7 +76,7 @@ class TaskFormScreenState extends ConsumerState<TaskFormScreen> {
                 controller: _titleController,
                 decoration: const InputDecoration(labelText: 'Título'),
                 textInputAction: TextInputAction.next,
-                validator: TaskValidator.validateTitle,
+                validator: TaskFormUtils.validateTitle,
               ),
               const SizedBox(height: 16),
               TextFormField(
