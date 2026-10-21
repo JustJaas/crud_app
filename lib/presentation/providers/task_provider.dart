@@ -1,10 +1,15 @@
 import 'package:crud_app/data/task_repository.dart';
 import 'package:crud_app/domain/task.dart';
-import 'package:crud_app/presentation/providers/task_providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final Provider<TaskRepository> taskRepositoryProvider =
+    Provider<TaskRepository>((Ref ref) => TaskRepository());
+
+final NotifierProvider<TaskListNotifier, List<Task>> taskListProvider =
+    NotifierProvider<TaskListNotifier, List<Task>>(TaskListNotifier.new);
+
 class TaskListNotifier extends Notifier<List<Task>> {
-  TaskRepository get _repository => ref.read(TaskProviders.repository);
+  TaskRepository get _repository => ref.read(taskRepositoryProvider);
 
   @override
   List<Task> build() {

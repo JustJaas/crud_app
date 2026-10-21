@@ -1,6 +1,5 @@
 import 'package:crud_app/domain/task.dart';
-import 'package:crud_app/presentation/providers/task_list_notifier.dart';
-import 'package:crud_app/presentation/providers/task_providers.dart';
+import 'package:crud_app/presentation/providers/task_provider.dart';
 import 'package:crud_app/presentation/screens/task_detail_screen.dart';
 import 'package:crud_app/presentation/screens/task_form_screen.dart';
 import 'package:crud_app/presentation/widgets/empty_state.dart';
@@ -13,8 +12,8 @@ class TaskListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<Task> tasks = ref.watch(TaskProviders.taskList);
-    final TaskListNotifier notifier = ref.read(TaskProviders.taskList.notifier);
+    final List<Task> tasks = ref.watch(taskListProvider);
+    final TaskListNotifier notifier = ref.read(taskListProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Gestor de Tareas')),

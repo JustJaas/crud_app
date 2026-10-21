@@ -1,7 +1,6 @@
 import 'package:crud_app/domain/task.dart';
+import 'package:crud_app/presentation/providers/task_provider.dart';
 import 'package:crud_app/presentation/utils/task_form_utils.dart';
-import 'package:crud_app/presentation/providers/task_list_notifier.dart';
-import 'package:crud_app/presentation/providers/task_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -45,7 +44,7 @@ class _TaskFormScreenState extends ConsumerState<TaskFormScreen> {
       return;
     }
 
-    final TaskListNotifier notifier = ref.read(TaskProviders.taskList.notifier);
+    final TaskListNotifier notifier = ref.read(taskListProvider.notifier);
     final String title = _titleController.text.trim();
     final String description = _descriptionController.text.trim();
     final Task? existing = widget.existingTask;

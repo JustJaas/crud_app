@@ -1,5 +1,5 @@
 import 'package:crud_app/domain/task.dart';
-import 'package:crud_app/presentation/providers/task_providers.dart';
+import 'package:crud_app/presentation/providers/task_provider.dart';
 import 'package:crud_app/presentation/screens/task_form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,7 +20,7 @@ class TaskDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<Task> tasks = ref.watch(TaskProviders.taskList);
+    final List<Task> tasks = ref.watch(taskListProvider);
     final Task? task = _findTask(tasks);
 
     if (task == null) {
@@ -52,7 +52,7 @@ class TaskDetailScreen extends ConsumerWidget {
             icon: const Icon(Icons.delete),
             onPressed: () {
               Navigator.pop(context);
-              ref.read(TaskProviders.taskList.notifier).deleteTask(task.id);
+              ref.read(taskListProvider.notifier).deleteTask(task.id);
             },
           ),
         ],
